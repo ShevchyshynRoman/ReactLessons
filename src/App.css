@@ -8,13 +8,13 @@
 
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
-    /* grid-gap: 10px; */
+    grid-gap: 10px;
 
 }
 
 .header {
     grid-area: h;
-    background-color: green;
+    background-color: #008000;
 }
 
 .header img {
@@ -23,10 +23,10 @@
 
 .nav {
     grid-area: n;
-    background-color: burlywood;
+    background-color: #30D5C8;
 }
 
 .content {
     grid-area: c;
-    background-color: cornflowerblue;
+    background-color: #E0FFFF;
 }
