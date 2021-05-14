@@ -1,12 +1,12 @@
 import style from './Post.module.css'
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={style.item}>
             <img src="https://www.shareicon.net/data/512x512/2016/05/29/772559_user_512x512.png" alt="avatar"/>
-            Some text
+            {props.message}
             <div>
-                <span>Like</span> 0
+                <span>Like {props.likesCount}</span>
             </div>
         </div>
     )
