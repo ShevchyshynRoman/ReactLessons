@@ -1,9 +1,9 @@
-import style from './Profile.module.css'
+import styles from './Profile.module.css'
 import Posts from "./MyPosts/Posts";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
-        <div className={style.content}>
+        <div>
             <div>
                 <img
                     src='https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350'/>

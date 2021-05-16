@@ -1,7 +1,7 @@
-import style from './Posts.module.css'
+import styles from './Posts.module.css'
 import Post from "./Post/Post";
 
-const Posts = () => {
+const Posts = (props) => {
     return (
         <div>
             My posts
