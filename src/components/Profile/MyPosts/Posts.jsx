@@ -1,6 +1,11 @@
 import styles from './Posts.module.css'
 import Post from "./Post/Post";
 
+const PostData = [
+    {id: 1, message: 'Hi, how are you?', likesCount: 3},
+    {id: 2, message: 'It\'s my first post', likesCount: 7}
+]
+
 const Posts = (props) => {
     return (
         <div className={styles.posts_wrapper}>
@@ -14,10 +19,8 @@ const Posts = (props) => {
                 </div>
             </div>
             <div className={styles.posts}>
-                <Post message='Hi,how are you?'
-                      likesCount='3'/>
-                <Post message="It's my first post"
-                      likesCount='7'/>
+                <Post message={PostData[0].message} likesCount={PostData[0].likesCount}/>
+                <Post message={PostData[1].message} likesCount={PostData[1].likesCount}/>
             </div>
         </div>
     )
