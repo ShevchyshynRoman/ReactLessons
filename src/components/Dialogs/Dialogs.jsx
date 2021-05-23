@@ -19,34 +19,31 @@ const MessageItem = (props) => {
     )
 }
 
-const DialogsData = [
+const dialogs = [
     {id: 1, name: 'Mykhailo'},
     {id: 2, name: 'Roman'},
     {id: 3, name: 'Danilo'},
     {id: 4, name: 'Anton'},
     {id: 5, name: 'Vasyl'},
 ]
-const MessagesData = [
+let DialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+
+const messages = [
     {id: 1, message: 'Hi'},
     {id: 2, message: 'How are you?'},
     {id: 3, message: 'You are welcome!'}
 ]
+let MessagesElements = messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
 
 const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogs_items}>
-                <DialogItem id={DialogsData[0].id} name={DialogsData[0].name}/>
-                <DialogItem id={DialogsData[1].id} name={DialogsData[1].name}/>
-                <DialogItem id={DialogsData[2].id} name={DialogsData[2].name}/>
-                <DialogItem id={DialogsData[3].id} name={DialogsData[3].name}/>
-                <DialogItem id={DialogsData[4].id} name={DialogsData[4].name}/>
+                {DialogsElements} {/*Відмальовуємо DialogItem*/}
             </div>
             <div className={styles.dialogs_messages}>
-                <MessageItem message={MessagesData[0].message}/>
-                <MessageItem message={MessagesData[1].message}/>
-                <MessageItem message={MessagesData[2].message}/>
+                {MessagesElements} {/*Відмальовуємо MessageItem*/}
             </div>
         </div>
     )
