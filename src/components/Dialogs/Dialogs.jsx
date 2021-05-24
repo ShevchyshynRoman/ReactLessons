@@ -2,24 +2,12 @@ import styles from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
-const dialogs = [
-    {id: 1, name: 'Mykhailo'},
-    {id: 2, name: 'Roman'},
-    {id: 3, name: 'Danilo'},
-    {id: 4, name: 'Anton'},
-    {id: 5, name: 'Vasyl'},
-]
 
-const messages = [
-    {id: 1, message: 'Hi'},
-    {id: 2, message: 'How are you?'},
-    {id: 3, message: 'You are welcome!'}
-]
 
 
 const Dialogs = (props) => {
-    let DialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let DialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = props.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
     return (
         <div className={styles.dialogs}>
