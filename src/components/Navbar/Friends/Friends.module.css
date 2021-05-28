@@ -1,0 +1,10 @@
+.friends_content {
+    padding-top: 250px;
+}
+.title {
+    color: white;
+}
+.persons_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
