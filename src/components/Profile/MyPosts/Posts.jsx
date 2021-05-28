@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 
 
 const Posts = (props) => {
-    let PostsElements = props.PostData.map(post => <Post message={post.message} likesCount={post.likesCount} id={post.id}/>)
+    let PostsElements = props.state.postData.map(post => <Post message={post.message} likesCount={post.likesCount} id={post.id}/>)
 
     return (
         <div className={styles.posts_wrapper}>
