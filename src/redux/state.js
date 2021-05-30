@@ -21,9 +21,9 @@ let state = {
     },
     sideBar: {
         friends: [
-            {name: 'Roman'},
-            {name: 'Misha'},
-            {name: 'Danilo'}
+            {name: 'Vasya'},
+            {name: 'Serega'},
+            {name: 'Tohan'}
         ]
     },
 }
