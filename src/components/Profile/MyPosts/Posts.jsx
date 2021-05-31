@@ -3,14 +3,15 @@ import styles from './Posts.module.css'
 import Post from "./Post/Post";
 
 
-
 const Posts = (props) => {
-    let PostsElements = props.state.postData.map(post => <Post message={post.message} likesCount={post.likesCount} id={post.id}/>)
+    let PostsElements = props.state.postData.map(post => <Post message={post.message} likesCount={post.likesCount}
+                                                               id={post.id}/>)
 
     let newPostText = React.createRef();
     let addPost = () => {
-      let text = newPostText.current.value;
-      alert(text);
+        debugger;
+        let text = newPostText.current.value;
+        props.addPost(text);
     }
 
 
