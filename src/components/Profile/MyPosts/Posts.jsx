@@ -12,8 +12,8 @@ const Posts = (props) => {
         debugger;
         let text = newPostText.current.value;
         props.addPost(text);
+        newPostText.current.value = '';
     }
-
 
     return (
         <div className={styles.posts_wrapper}>
