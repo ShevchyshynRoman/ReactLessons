@@ -5,15 +5,17 @@ import MessageItem from "./MessageItem/MessageItem";
 
 
 const Dialogs = (props) => {
-    let DialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = props.state.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let DialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = props.dialogsPage.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
     let newMessageText = React.createRef();
     let addMessage = () => {
-        let message = newMessageText.current.value;
-        alert(message)
+        props.addMessage()
     }
-
+    let onDialogChange = () => {
+        let text = newMessageText.current.value;
+        props.updateNewDialogText(text)
+    }
 
     return (
         <div className={styles.dialogs}>
@@ -24,7 +26,8 @@ const Dialogs = (props) => {
                 {MessagesElements} {/*Відмальовуємо MessageItem*/}
                 <div>
                     <div>
-                        <textarea ref={newMessageText}></textarea>
+                        <textarea ref={newMessageText} onChange={onDialogChange}
+                                  value={props.dialogsPage.newDialogText}> </textarea>
                     </div>
                     <div>
                         <button onClick={addMessage}>Add Message</button>
