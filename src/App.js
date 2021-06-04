@@ -9,11 +9,12 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 
+
 const App = (props) => {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar state={props.state.sideBar}/>
+            <Navbar sideBar={props.state.sideBar}/>
             <div className='app-wrapper-content'>
                 <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
                                                               addPost={props.addPost}
