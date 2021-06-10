@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Posts.module.css'
 import Post from "./Post/Post";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/store";
 
 
 const Posts = (props) => {
@@ -10,12 +11,15 @@ const Posts = (props) => {
     let newPostText = React.createRef();
     let addPost = () => {
         //props.addPost();
-        props.dispatch({type: 'ADD-POST'})
+        //props.dispatch({type: 'ADD-POST'})
+        props.dispatch(addPostActionCreator())
     }
     let onPostChange = () => {
         let text = newPostText.current.value;
         //props.updateNewPostText(text);
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText:text})
+        ///let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
+        ///props.dispatch(action)
+        props.dispatch(updateNewPostTextActionCreator(text)) //передаємо text з textarea
     }
 
 
