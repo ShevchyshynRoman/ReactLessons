@@ -2,24 +2,25 @@ import styles from './Dialogs.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessageActionCreator, updateNewDialogTextActionCreator} from "../../redux/store";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/store";
 
 
 const Dialogs = (props) => {
-    let DialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = props.dialogsPage.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let state = props.store.getState().dialogsPage
 
-    let newMessageText = React.createRef();
-    let addMessage = () => {
+    let DialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = state.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+
+    let onSendMessageClick = () => {
         //props.addMessage()
         //props.dispatch({type: 'ADD-MESSAGE'})
         props.dispatch(addMessageActionCreator())
     }
-    let onDialogChange = () => {
-        let text = newMessageText.current.value;
+    let onNewMessageChange = (event) => {
+        let text = event.target.value;
         //props.updateNewDialogText(text)
         //props.dispatch({ type: 'UPDATE-NEW-DIALOG-TEXT', newText: text})
-        props.dispatch(updateNewDialogTextActionCreator(text)) // передаємо text з textarea
+        props.dispatch(updateNewMessageTextActionCreator(text)) // передаємо text з textarea
     }
 
     return (
@@ -31,11 +32,11 @@ const Dialogs = (props) => {
                 {MessagesElements} {/*Відмальовуємо MessageItem*/}
                 <div>
                     <div>
-                        <textarea ref={newMessageText} onChange={onDialogChange}
-                                  value={props.dialogsPage.newDialogText}> </textarea>
+                        <textarea onChange={onNewMessageChange}
+                                  value={state.newDialogText}/>
                     </div>
                     <div>
-                        <button onClick={addMessage}>Add Message</button>
+                        <button onClick={onSendMessageClick}>Add Message</button>
                     </div>
                 </div>
             </div>

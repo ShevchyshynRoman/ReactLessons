@@ -59,7 +59,8 @@ let store = {
             this._state.profilePage.postData.push(newPost);
             this._state.profilePage.newPostText = '';
             this._CallSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+        }
+        else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._CallSubscriber(this._state);
         }
@@ -72,7 +73,8 @@ let store = {
             this._state.dialogsPage.messages.push(dialogMessage)
             this._state.dialogsPage.newDialogText = '';
             this._CallSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
+        }
+        else if (action.type === UPDATE_NEW_DIALOG_TEXT) {
             this._state.dialogsPage.newDialogText = action.newText;
             this._CallSubscriber(this._state);
         }
@@ -84,7 +86,7 @@ export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 //DIALOGS ACTION CREATORS
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const updateNewDialogTextActionCreator = (text) => ({type: UPDATE_NEW_DIALOG_TEXT, newText: text})
+export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_DIALOG_TEXT, newText: text})
 
 window.store = store
 export default store;

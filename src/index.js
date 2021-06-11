@@ -11,7 +11,7 @@ let rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App state={store.getState()}
+                <App store={store}
                      dispatch={store.dispatch.bind(store)}
                 />
             </React.StrictMode>
