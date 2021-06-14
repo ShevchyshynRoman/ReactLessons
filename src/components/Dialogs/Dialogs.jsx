@@ -2,11 +2,11 @@ import styles from './Dialogs.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/store";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
-    let state = props.store.getState().dialogsPage
+    let state = props.store.getState().dialogsPage;
 
     let DialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
     let MessagesElements = state.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
