@@ -2,25 +2,19 @@ import styles from './Dialogs.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {
-    let state = props.store.getState().dialogsPage;
 
-    let DialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = state.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let DialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = props.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
     let onSendMessageClick = () => {
-        //props.addMessage()
-        //props.dispatch({type: 'ADD-MESSAGE'})
-        props.dispatch(addMessageActionCreator())
+        props.addMessage()
     }
     let onNewMessageChange = (event) => {
         let text = event.target.value;
-        //props.updateNewDialogText(text)
-        //props.dispatch({ type: 'UPDATE-NEW-DIALOG-TEXT', newText: text})
-        props.dispatch(updateNewMessageTextActionCreator(text)) // передаємо text з textarea
+        props.updateNewMessageText(text)
     }
 
     return (
@@ -33,7 +27,7 @@ const Dialogs = (props) => {
                 <div>
                     <div>
                         <textarea onChange={onNewMessageChange}
-                                  value={state.newDialogText}/>
+                                  value={props.newDialogText}/>
                     </div>
                     <div>
                         <button onClick={onSendMessageClick}>Add Message</button>

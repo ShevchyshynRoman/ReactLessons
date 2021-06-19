@@ -1,24 +1,18 @@
 import React from 'react'
 import styles from './Posts.module.css'
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
 
 const Posts = (props) => {
-    let state = props.store.getState().profilePage;
-    let PostsElements = state.postData.map(post => <Post message={post.message} likesCount={post.likesCount}
+
+    let PostsElements = props.postData.map(post => <Post message={post.message} likesCount={post.likesCount}
                                                          id={post.id}/>)
-    let addPost = () => {
-        //props.addPost();
-        //props.dispatch({type: 'ADD-POST'})
-        props.dispatch(addPostActionCreator())
+    let onAddPost = () => {
+        props.addPost();
     }
     let onPostChange = (event) => {
         let text = event.target.value;
-        //props.updateNewPostText(text);
-        ///let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};
-        ///props.dispatch(action)
-        props.dispatch(updateNewPostTextActionCreator(text)) //передаємо text з textarea
+        props.updateNewPostText(text);
     }
 
 
@@ -28,10 +22,10 @@ const Posts = (props) => {
             <div>
                 <div>
                     <textarea onChange={onPostChange}
-                              value={state.newPostText}/> {/*Передаємо зі state newPostText*/}
+                              value={props.newPostText}/> {/*Передаємо зі state newPostText*/}
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
             <div className={styles.posts}>
