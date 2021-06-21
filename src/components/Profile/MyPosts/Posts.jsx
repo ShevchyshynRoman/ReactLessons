@@ -15,7 +15,6 @@ const Posts = (props) => {
         props.updateNewPostText(text);
     }
 
-
     return (
         <div className={styles.posts_wrapper}>
             <h3>My posts</h3>
