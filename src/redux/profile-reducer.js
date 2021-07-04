@@ -6,7 +6,7 @@ let initialState = {
         {id: 1, message: 'Hi, how are you?', likesCount: 3},
         {id: 2, message: 'It\'s my first post', likesCount: 7}
     ],
-    newPostText: 'newPostTestText',
+    newPostText: '',
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -15,17 +15,19 @@ const profileReducer = (state = initialState, action) => {
             let newPost = {
                 id: 3,
                 message: state.newPostText,
-                likesCount: 0,
+                likesCount: 0
             }
-            let copyState = {...state}
-            copyState.postData.push(newPost);
-            copyState.newPostText = '';
-            return copyState;
+            return {
+                ...state,
+                postData: [...state.postData,newPost],
+                newPostText: ''
+            }
         }
         case UPDATE_NEW_POST_TEXT:
-            let copyState = {...state}
-            copyState.newPostText = action.newText;
-            return copyState;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         default:
             return state;
     }

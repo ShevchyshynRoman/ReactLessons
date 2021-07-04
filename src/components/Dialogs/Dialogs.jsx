@@ -6,8 +6,8 @@ import MessageItem from "./MessageItem/MessageItem";
 
 const Dialogs = (props) => {
 
-    let DialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = props.messages.map(m => <MessageItem message={m.message} id={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let DialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = props.dialogsPage.messages.map(m => <MessageItem message={m.message} id={m.id} key={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
     let onSendMessageClick = () => {
         props.addMessage()
@@ -27,7 +27,7 @@ const Dialogs = (props) => {
                 <div>
                     <div>
                         <textarea onChange={onNewMessageChange}
-                                  value={props.newDialogText}/>
+                                  value={props.dialogsPage.newDialogText}/>
                     </div>
                     <div>
                         <button onClick={onSendMessageClick}>Add Message</button>
