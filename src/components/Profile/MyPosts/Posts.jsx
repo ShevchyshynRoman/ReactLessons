@@ -5,12 +5,12 @@ import Post from "./Post/Post";
 
 const Posts = (props) => {
 
-    let PostsElements = props.postData.map(post => <Post message={post.message} likesCount={post.likesCount}
-                                                         id={post.id}/>)
+    let PostsElements = props.postData.map(p => <Post message={p.message} likesCount={p.likesCount}
+                                                         id={p.id}  key={p.id}/>)
     let onAddPost = () => {
         props.addPost();
     }
-    let onPostChange = (event) => {
+    let onPostTextChange = (event) => {
         let text = event.target.value;
         props.updateNewPostText(text);
     }
@@ -20,7 +20,7 @@ const Posts = (props) => {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea onChange={onPostChange}
+                    <textarea onChange={onPostTextChange}
                               value={props.newPostText}/> {/*Передаємо зі state newPostText*/}
                 </div>
                 <div>
