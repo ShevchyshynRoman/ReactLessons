@@ -1,33 +1,21 @@
 import React from "react";
 import styles from './users.module.css'
+import axios from "axios";
+import userPhoto from '../../../src/assets/user.png'
 
 const Users = (props) => {
     if (props.users.length === 0) {
-        props.setUsers(
-            [{
-                id: 1,
-                photoUrl: 'https://en.respect-hire.tech/static/images/default_avatar.fb6c115388e7.svg',
-                followed: true,
-                fullName: 'Roman',
-                status: 'I`m busy',
-                location: {city: 'Lviv', country: 'Ukraine'}
-            },
-                {
-                    id: 2,
-                    photoUrl: 'https://en.respect-hire.tech/static/images/default_avatar.fb6c115388e7.svg',
-                    followed: false,
-                    fullName: 'Misha',
-                    status: 'I`m beast',
-                    location: {city: 'Alatyr', country: 'Russia'}
-                }]
-        )
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+            props.setUsers(response.data.items)
+        })
     }
     return <div>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
-                        <img src={u.photoUrl} className={styles.userPhoto} alt="userPhoto"/>
+                        <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto}
+                             alt="userPhoto"/>
                     </div>
                     <div>
                         {
@@ -39,12 +27,12 @@ const Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                         <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                         <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
             </div>)
