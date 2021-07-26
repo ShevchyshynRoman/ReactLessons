@@ -45,8 +45,8 @@ class UsersContainer extends React.Component {
                                                                pageSize={this.props.pageSize}
                                                                currentPage={this.props.currentPage}
                                                                users={this.props.users}
-                                                               Follow={this.props.Follow}
-                                                               unFollow={this.props.unFollow}
+                                                               follow={this.props.follow}
+                                                               unfollow={this.props.unfollow}
                                                                onPageChanged={this.onPageChanged}
                 />}
             </>
