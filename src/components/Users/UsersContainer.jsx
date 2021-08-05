@@ -16,7 +16,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-
 class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toogleIsFetching(true)
