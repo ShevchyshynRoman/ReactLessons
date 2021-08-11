@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Наш DAL рівень
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
@@ -19,16 +20,13 @@ export const usersAPI = {
     follow(id) {
         return instance.post(`follow/${id}`,{})
             .then(response => response.data)
+    },
+    getProfileUser(userId) {
+        return instance.get(`profile/` + userId)
     }
 }
 export const authAPI = {
-    getAuth() {
+    me() {
         return instance.get(`auth/me`)
-        .then(response => response.data)
-    }
-}
-export const profileAPI = {
-    getProfileUser(userId) {
-        return instance.get(`profile/` + userId).then(response => response.data)
     }
 }

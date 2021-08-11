@@ -7,7 +7,7 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
-    return (
+     return (
         <div>
             <div>
                 <img
@@ -15,20 +15,20 @@ const ProfileInfo = (props) => {
             </div>
             <div className={styles.description}>
                 <div>
-                    <img src={props.profile.photos.large}/>
+                    <img src={props.profile.data.photos.large}/>
                 </div>
                 <div>
                     <div> Full Name:
-                        <span> {props.profile.fullName}</span>
+                        <span> {props.profile.data.fullName}</span>
                     </div>
                     <div> About me:
-                        <span> {props.profile.aboutMe}</span>
+                        <span> {props.profile.data.aboutMe}</span>
                     </div>
                     <div>
-                        Contacts:<span> {props.profile.contacts.vk}</span>
+                        Contacts:<span> {props.profile.data.contacts.vk}</span>
                     </div>
                     <div> Job looking:
-                        <span>{props.profile.lookingForAJob
+                        <span>{props.profile.data.lookingForAJob
                             ? <img className={styles.jobImg} src={lookingForAJob}/>
                             : <img className={styles.jobImg} src={dontLookingForAJob}/>
                         }</span>

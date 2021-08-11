@@ -3,7 +3,7 @@ import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
 import {usersAPI} from "../../api/api";
-
+import {follow, unFollow} from "../../redux/users-reducer";
 
 let Users = (props) => {
 
@@ -39,26 +39,9 @@ let Users = (props) => {
                         {
                             u.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.toggleFollowingProgress(true, u.id)
-                                    usersAPI.unfollow(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unfollow(u.id);
-                                            }
-                                            props.toggleFollowingProgress(false, u.id)
-                                        });
-                                }}>Unfollow</button>
-
+                                    props.unFollow(u.id)}}>Unfollow</button>
                                 : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                    props.toggleFollowingProgress(true, u.id)
-                                    usersAPI.follow(u.id)
-                                        .then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(u.id);
-                                            }
-                                            props.toggleFollowingProgress(false, u.id)
-                                        });
-                                }}>Follow</button>
+                                    props.follow(u.id)}}>Follow</button>
                         }
                     </div>
                 </span>
