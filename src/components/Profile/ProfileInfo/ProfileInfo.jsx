@@ -2,11 +2,15 @@ import styles from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import lookingForAJob from '../../../assets/images/successJob.png'
 import dontLookingForAJob from '../../../assets/images/dislike.png'
+import user from '../../../assets/images/user.png'
+
+
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+
      return (
         <div>
             <div>
@@ -15,7 +19,9 @@ const ProfileInfo = (props) => {
             </div>
             <div className={styles.description}>
                 <div>
-                    <img src={props.profile.data.photos.large}/>
+                    {props.profile.data.photos.large
+                        ? <img  className={styles.userAvatar}  src={props.profile.data.photos.large }/>
+                        : <img  className={styles.userAvatar}  src={user} alt="No Photo"/> }
                 </div>
                 <div>
                     <div> Full Name:
@@ -32,6 +38,9 @@ const ProfileInfo = (props) => {
                             ? <img className={styles.jobImg} src={lookingForAJob}/>
                             : <img className={styles.jobImg} src={dontLookingForAJob}/>
                         }</span>
+                    </div>
+                    <div> Job description:
+                         <span> {props.profile.data.lookingForAJobDescription}</span>
                     </div>
 
                 </div>
