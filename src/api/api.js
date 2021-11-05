@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// Наш DAL рівень
+
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
-    headers: {'API-KEY': '04f22513-e8bd-4d69-962c-4896cae89da2'}
+    headers: {'API-KEY': '304c909b-7dba-498e-b89b-3d327aadaa93'}
 })
 
 

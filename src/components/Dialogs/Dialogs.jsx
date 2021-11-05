@@ -2,13 +2,13 @@ import styles from './Dialogs.module.css'
 import React from 'react'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {Redirect} from "react-router-dom";
+
 
 
 const Dialogs = (props) => {
-
-    let DialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
-    let MessagesElements = props.dialogsPage.messages.map(m => <MessageItem message={m.message} id={m.id} key={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
+    let state = props.dialogsPage
+    let DialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>) //мапимо массив DialogsData для відмаьовування <DialogItem/>
+    let MessagesElements = state.messages.map(m => <MessageItem message={m.message} id={m.id} key={m.id}/>) //мапимо массив MessagesData для відмаьовування <MessageItem/>
 
     let onSendMessageClick = () => {
         props.addMessage()
@@ -17,7 +17,7 @@ const Dialogs = (props) => {
         let text = event.target.value;
         props.updateNewMessageText(text)
     }
-    if (!props.isAuth) return <Redirect to={'/login'} />
+
 
     return (
         <div className={styles.dialogs}>
