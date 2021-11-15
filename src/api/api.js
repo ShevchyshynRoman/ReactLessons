@@ -22,11 +22,26 @@ export const usersAPI = {
             .then(response => response.data)
     },
     getProfileUser(userId) {
-        return instance.get(`profile/` + userId)
+        console.warn('Obsolete method,please use profileApi.getProfileUser method')
+        return profileApi.getProfileUser(userId)
     }
 }
+
+export const profileApi = {
+    getProfileUser(userId) {
+        return instance.get(`profile/` + userId)
+    },
+    getUserStatus(userId){
+        return  instance.get(`profile/status/` + userId)
+    },
+    updateUserStatus(status){
+        return  instance.put(`profile/status/`,{status: status})
+    }
+}
+
 export const authAPI = {
     me() {
         return instance.get(`auth/me`)
     }
 }
+
