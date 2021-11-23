@@ -5,7 +5,7 @@ import {Element} from "../common/FormsControls/FormControls";
 import {connect} from "react-redux";
 import {logIn} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
-
+import styles from "./../common/FormsControls/FormControls.module.css"
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -32,15 +32,20 @@ const LoginForm = (props) => {
                        validate={[required]}/>
             </div>
             <div>
-                <Field placeholder={'login'}
+                <Field placeholder={'password'}
                        component={Input}
                        name={'password'}
                        type={'password'}
                        validate={[required]}/>
             </div>
             <div>
-                <Field type={'checkbox'} component={Input} name={'rememberMe'}   validate={[required]}/> remember me
+               remember me <Field type={'checkbox'} component={Input} name={'rememberMe'} validate={[required]}/>
             </div>
+            {
+                props.error && <div className={styles.formSummaryError}>
+                        {props.error}
+                    </div>
+            }
             <div>
                 <button>Login</button>
             </div>
