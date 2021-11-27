@@ -25,13 +25,14 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USE
 
 //thunk
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.me()
+    return authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data;
                 dispatch(setAuthUserData(id, email, login, true));
             }
         });
+
 }
 export const logIn = (email,password,rememberMe) => (dispatch) => {
     authAPI.login(email,password,rememberMe)
