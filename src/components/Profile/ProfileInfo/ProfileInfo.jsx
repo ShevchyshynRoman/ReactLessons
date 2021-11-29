@@ -4,6 +4,7 @@ import lookingForAJob from '../../../assets/images/successJob.png'
 import dontLookingForAJob from '../../../assets/images/dislike.png'
 import user from '../../../assets/images/user.png'
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 
@@ -43,7 +44,8 @@ const ProfileInfo = (props) => {
                     <div> Job description:
                         <span> {props.profile.data.lookingForAJobDescription}</span>
                     </div>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 
                 </div>
             </div>
