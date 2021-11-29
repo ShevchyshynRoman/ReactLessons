@@ -8,10 +8,10 @@ import App from "./App";
 import {Provider} from "react-redux";
 
 
-
-setInterval(() => {
-    store.dispatch({type: 'FAKE'})
-},1000)
+//getUsersSuperSelector from user-selector.js
+// setInterval(() => {
+//     store.dispatch({type: 'FAKE'})
+// },1000)
 
 ReactDOM.render(
     <BrowserRouter>

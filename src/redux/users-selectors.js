@@ -1,7 +1,12 @@
 // Селектор функція котра приймає стейт(весь стейт цілком) дістає з нього те що потрібно і повертає в бізнес
-export const getUsersSelector = (state) => {
-    return state.usersPage.users.filter(users => true)
+import {createSelector} from "reselect";
+
+const getUsersSelector = (state) => {
+    return state.usersPage.users
 }
+export const getUsersSuperSelector = createSelector(getUsersSelector,(users) => {
+    return users.filter(user => true)
+})
 
 export const getPageSizeSelector = (state) => {
     return state.usersPage.pageSize
