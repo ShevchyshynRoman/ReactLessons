@@ -7,6 +7,7 @@ const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
+const FAKE = 'FAKE'
 
 let initialState = {
     users: [],
@@ -14,11 +15,13 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
+    followingInProgress: [],
+    fake: 10
 }
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case FAKE: return {...state, fake: action.fake + 1}
         case FOLLOWED:
             return {
                 ...state,
@@ -54,12 +57,14 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         default:
             return state;
     }
 }
+
+
 export const followSuccess = (userId) => ({type: FOLLOWED, userId})
 export const unfollowSuccess = (userId) => ({type: UNFOLLOWED, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
